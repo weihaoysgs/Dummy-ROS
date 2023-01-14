@@ -1,0 +1,391 @@
+<robot
+  name="dummy_sim_ros">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-6.8096E-05 0.070008 0.00019856"
+        rpy="0 0 0" />
+      <mass
+        value="1.5382" />
+      <inertia
+        ixx="0.0040131"
+        ixy="-1.2472E-05"
+        ixz="2.4677E-06"
+        iyy="0.00089179"
+        iyz="0.0013906"
+        izz="0.003361" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.72157 0.72157 0.72157 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link1">
+    <inertial>
+      <origin
+        xyz="-0.0056156 0.0056565 0.11554"
+        rpy="0 0 0" />
+      <mass
+        value="0.052137" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.81176 0.1451 0.1451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.023"
+      rpy="-9.9341E-09 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="link2">
+    <inertial>
+      <origin
+        xyz="0.064108 -0.0022481 -0.016073"
+        rpy="0 0 0" />
+      <mass
+        value="0.28881" />
+      <inertia
+        ixx="3.94E-05"
+        ixy="-9.3344E-07"
+        ixz="3.4684E-05"
+        iyy="0.00029691"
+        iyz="-7.3142E-07"
+        izz="0.00025967" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79608 0.79608 0.79608 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0.02 0.035 0.132"
+      rpy="0 -1.5708 0" />
+    <parent
+      link="link1" />
+    <child
+      link="link2" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="link3">
+    <inertial>
+      <origin
+        xyz="0.0351882654713319 -0.0116621887555742 -0.030903416656249"
+        rpy="0 0 0" />
+      <mass
+        value="0.0927716605678686" />
+      <inertia
+        ixx="7.27805664799282E-05"
+        ixy="6.17755949678826E-07"
+        ixz="4.38106132602059E-06"
+        iyy="5.95407425791179E-05"
+        iyz="-2.05826219620544E-05"
+        izz="1.52828302700554E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.811764705882353 0.145098039215686 0.145098039215686 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint3"
+    type="revolute">
+    <origin
+      xyz="0.146 0.004 0.02015"
+      rpy="3.1416 1.5708 0" />
+    <parent
+      link="link2" />
+    <child
+      link="link3" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="link4">
+    <inertial>
+      <origin
+        xyz="-0.00879903220502491 0.0929695109996963 -0.00135814214840718"
+        rpy="0 0 0" />
+      <mass
+        value="0.0565793373002389" />
+      <inertia
+        ixx="4.52106144351053E-05"
+        ixy="6.10698310048182E-06"
+        ixz="1.5260735796647E-07"
+        iyy="5.30731189922814E-06"
+        iyz="-8.89643399138576E-07"
+        izz="5.00251216011412E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.811764705882353 0.145098039215686 0.145098039215686 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint4"
+    type="revolute">
+    <origin
+      xyz="0.04015 -0.035 -0.0533"
+      rpy="3.1416 0 -3.1416" />
+    <parent
+      link="link3" />
+    <child
+      link="link4" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="link5">
+    <inertial>
+      <origin
+        xyz="-0.00354102571014257 0.0226043546297583 2.1993427339384E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.00965516430296135" />
+      <inertia
+        ixx="5.195697005033E-07"
+        ixy="1.66775583567096E-07"
+        ixz="-9.0575340290026E-10"
+        iyy="9.63428924734517E-08"
+        iyz="1.39675577621294E-09"
+        izz="5.94717960141526E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.811764705882353 0.145098039215686 0.145098039215686 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint5"
+    type="revolute">
+    <origin
+      xyz="0.0168 0.1562 -0.0013"
+      rpy="0 0 0" />
+    <parent
+      link="link4" />
+    <child
+      link="link5" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="1" />
+  </joint>
+  <link
+    name="link6">
+    <inertial>
+      <origin
+        xyz="4.93429714271079E-08 1.21614367826206E-06 -0.0210553749932149"
+        rpy="0 0 0" />
+      <mass
+        value="0.0185604039379725" />
+      <inertia
+        ixx="3.28515570655283E-06"
+        ixy="7.95165222418765E-16"
+        ixz="1.76807257819155E-11"
+        iyy="3.28515386880515E-06"
+        iyz="-5.65838329502697E-10"
+        izz="1.83814962825549E-12" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.796078431372549 0.796078431372549 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dummy_sim_ros/meshes/link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint6"
+    type="revolute">
+    <origin
+      xyz="-0.0168 0.0668 0"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="link5" />
+    <child
+      link="link6" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="100"
+      velocity="1" />
+  </joint>
+</robot>
