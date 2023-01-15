@@ -4,9 +4,11 @@
   <arg
     name="gui"
     default="True" />
-  <param
+  <!-- <param
     name="robot_description"
-    textfile="$(find dummy_sim_ros)/urdf/dummy_sim_ros.urdf" />
+    textfile="$(find dummy_sim_ros)/urdf/dummy_sim_ros.urdf" /> -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find dummy_sim_ros)/urdf/dummy_sim_ros_xacro.xacro" />
+
   <param
     name="use_gui"
     value="$(arg gui)" />
