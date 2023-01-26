@@ -1,0 +1,34 @@
+dummy:
+  gazebo_ros_control:
+    pid_gains:
+      joint1:   
+        p: 1000.0
+        i: 0.0 
+        d: 0.0 
+        i_clamp: 0.0
+      joint2:   
+        p: 1000.0
+        i: 0.0 
+        d: 0.0 
+        i_clamp: 0.0
+      joint3:   
+        p: 10
+        i: 0.0 
+        d: 0.0 
+        i_clamp: 0.0
+      joint4:   
+        p: 10 
+        i: 0.0 
+        d: 0.0 
+        i_clamp: 0.0
+      joint5:   
+        p: 10
+        i: 0.0 
+        d: 0.0 
+        i_clamp: 0.0
+      joint6:   
+        p: 0.00
+        i: 0.0 
+        d: 0.0 
+        i_clamp: 0.0
+
