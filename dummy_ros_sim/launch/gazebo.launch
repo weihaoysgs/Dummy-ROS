@@ -1,4 +1,6 @@
 <launch>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find dummy_ros_sim)/urdf/dummy_ros_sim.xacro" />
+
   <include
     file="$(find gazebo_ros)/launch/empty_world.launch" />
   <node
@@ -6,11 +8,13 @@
     pkg="tf"
     type="static_transform_publisher"
     args="0 0 0 0 0 0 base_link base_footprint 40" />
+    <!-- args="-file $(find dummy_ros_sim)/urdf/dummy_ros_sim.urdf -urdf -model dummy_ros_sim" -->
+
   <node
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find dummy_ros_sim)/urdf/dummy_ros_sim.urdf -urdf -model dummy_ros_sim"
+    args="-urdf -model newaxis -param robot_description"
     output="screen" />
   <node
     name="fake_joint_calibration"
