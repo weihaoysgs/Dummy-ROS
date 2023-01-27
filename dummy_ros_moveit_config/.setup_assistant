@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dummy_ros_sim
+    relative_path: urdf/dummy_ros_sim.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/dummy_ros_sim.srdf
+  CONFIG:
+    author_name: weihao
+    author_email: weihaoysgs@gmail.com
+    generated_timestamp: 1674815094
