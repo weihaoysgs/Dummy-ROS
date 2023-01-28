@@ -1,0 +1,22 @@
+<launch>
+    <arg name="use_gui" default="false" />
+    <!-- By default, we are not in debug mode -->
+    <arg name="debug" default="false" />
+    <arg name="use_rviz" default="true" />
+    <include file="$(find dummy_ros_moveit_config)/launch/move_group.launch">
+        <arg name="publish_monitored_planning_scene" value="true" />
+    </include>
+
+    <!-- Run Rviz and load the default config to see the state of the move_group node -->
+    <include file="$(find dummy_ros_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
+        <arg name="rviz_config" value="$(find dummy_ros_moveit_config)/launch/moveit.rviz" />
+        <arg name="debug" value="$(arg debug)" />
+    </include>
+
+    <!-- We do not have a robot connected, so publish fake joint states -->
+    <node name="joint_state_publisher"
+        pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="/use_gui" value="false" />
+        <rosparam param="/source_list">[/dummy_ros/joint_states]</rosparam>
+    </node>
+</launch>

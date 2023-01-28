@@ -1,0 +1,17 @@
+<launch>
+    <!-- Launch Gazebo  -->
+    <include file="$(find dummy_ros_gazebo_moveit)/launch/dummy_ros_gazebo_world.launch" />
+
+    <!-- ros_control arm launch file -->
+    <include
+        file="$(find dummy_ros_gazebo_moveit)/launch/dummy_ros_gazebo_states.launch" />
+
+    <!-- ros_control trajectory control dof arm launch file -->
+    <include
+        file="$(find dummy_ros_gazebo_moveit)/launch/dummy_ros_trajectory_controller.launch" />
+
+    <!-- moveit launch file -->
+    <include
+        file="$(find dummy_ros_gazebo_moveit)/launch/dummy_ros_moveit_planning_execution.launch" />
+
+</launch>
