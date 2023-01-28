@@ -4,11 +4,11 @@
         command="load" />
 
     <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-        output="screen" args="joint_state_controller" />
-<!--  ns="/dummy_ros"  -->
+        output="screen" ns="/dummy_ros" args="joint_state_controller" />
+
     <!-- 运行robot_state_publisher节点，发布tf  -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen">
-        <!-- <remap from="/joint_states" to="/dummy_ros/joint_states" /> -->
+        <remap from="/joint_states" to="/dummy_ros/joint_states" />
     </node>
 </launch>
