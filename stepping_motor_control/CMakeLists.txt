@@ -119,6 +119,7 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
+include_directories( include )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -134,6 +135,15 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/stepping_motor_control_node.cpp)
+add_executable(can_bus_loop_node
+  node/can_bus_loop_node.cpp
+  src/socket_can.cpp
+  src/emm42_can.cpp
+)
+
+target_link_libraries(can_bus_loop_node
+  ${catkin_LIBRARIES}
+)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

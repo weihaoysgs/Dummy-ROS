@@ -6,10 +6,10 @@
 #include <pthread.h>
 #include <sys/ioctl.h>
 #include <sys/socket.h>
-
+#include <thread>
 #include <functional>
 #include <memory>
-#include <rclcpp/rclcpp.hpp>
+#include "ros/ros.h"
 #include <utility>
 
 namespace stepping_motor_control {
@@ -25,10 +25,10 @@ struct CanInterface
   using ConstSharedPtr = std::shared_ptr<CanInterface const>;
 };
 
-class SocketCAN : public rclcpp::Node
+class SocketCAN
 {
  public:
-  explicit SocketCAN(const std::string &node_name);
+  explicit SocketCAN();
   ~SocketCAN() = default;
   inline bool IsOpened(CanInterface::SharedPtr &can) const { return can->socket_can_fd_ != -1; }
   inline bool OpenCanDevice(CanInterface::SharedPtr &can);

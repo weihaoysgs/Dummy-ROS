@@ -2,7 +2,9 @@
 
 int main(int argc, char *argv[])
 {
-  rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<stepping_motor_control::SocketCAN>("can_bus_loop_node"));
-  rclcpp::shutdown();
+  ros::init(argc, argv, "can_bus_loop_node");
+  stepping_motor_control::SocketCAN socket_can;
+  ROS_INFO("Can Start Send And Receive!!!");
+  ros::spin();
+  return 0;
 }

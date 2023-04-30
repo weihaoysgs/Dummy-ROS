@@ -4,7 +4,7 @@
 namespace stepping_motor_control {
 
 
-SocketCAN::SocketCAN(const std::string &node_name) : Node(node_name)
+SocketCAN::SocketCAN()
 {
   can0_ = std::make_shared<CanInterface>();
   // self define the deconstructor, in order to avoid double free
@@ -12,7 +12,7 @@ SocketCAN::SocketCAN(const std::string &node_name) : Node(node_name)
   if (can0_->interface_name_ != "")
   {
     // LOG(INFO) << RM_COUT_BLUE << "Open Can 0" << RM_COUT_TAIL;
-    RCLCPP_INFO(this->get_logger(), "Open Can 0");
+    ROS_INFO("Open Can 0");
     this->OpenCanDevice(can0_);
     std::thread can_receive_t =
         std::thread(&SocketCAN::tReceiveCanFrameThread, this,
@@ -26,7 +26,7 @@ bool SocketCAN::OpenCanDevice(CanInterface::SharedPtr &can)
   can->socket_can_fd_ = socket(PF_CAN, SOCK_RAW, CAN_RAW);
   if (can->socket_can_fd_ == -1)
   {
-    RCLCPP_INFO(this->get_logger(), "Error: Unable to create a CAN socket");
+    ROS_INFO("Error: Unable to create a CAN socket");
     // LOG(FATAL) << "Error: Unable to create a CAN socket";
     return false;
   }
@@ -37,7 +37,7 @@ bool SocketCAN::OpenCanDevice(CanInterface::SharedPtr &can)
   if (ioctl(can->socket_can_fd_, SIOCGIFINDEX, &can->interface_request_) == -1)
   {
     this->Close(can);
-    RCLCPP_INFO(this->get_logger(), "Unable to select CAN interface: %s, I/O control error.", name);
+    ROS_INFO("Unable to select CAN interface: %s, I/O control error.", name);
     // LOG(FATAL) << "Unable to select CAN interface:" << name
     //            << " I/O control error";
     // Invalidate unusable socket
@@ -52,21 +52,23 @@ bool SocketCAN::OpenCanDevice(CanInterface::SharedPtr &can)
   if (rc == -1)
   {
     // LOG(FATAL) << "Failed to bind socket to " << name << " network interface";
-    RCLCPP_INFO(this->get_logger(), "Failed to bind socket to %s network interface", name);
+    ROS_INFO("Failed to bind socket to %s network interface", name);
     this->Close(can);
     return false;
   }
+
+  // ros::Rate r(1);
   
-  while(rclcpp::ok()) {
+  // while(ros::ok()) {
   Emm42CanMotor asdasd(1);
   std::unique_ptr<can_frame> asd = asdasd.GetPostionControlCanFrame(-1279, 100, 3200*27);
   int n = write(can0_->socket_can_fd_, asd.get(), sizeof(can_frame));
   // LOG_IF(ERROR, n == -1) << "Send Error";
-  RCLCPP_INFO(this->get_logger(), "n %d", n);
+  ROS_INFO("n %d", n);
   // rclcpp::Clock::sleep_for(rclcpp::Duration());
-  std::this_thread::sleep_for(std::chrono::seconds(10));
+  // r.sleep();
   // rclcpp::sleep_for(std::chrono::nanoseconds(1000*1000*2));
-  }
+  // }
   return true;
 }
 
@@ -90,7 +92,7 @@ void SocketCAN::tReceiveCanFrameThread(int &socket_can_fd) const
   };
   // Buffer to store incoming frame
 
-  while (rclcpp::ok())
+  while (ros::ok())
   {
     can_frame rx_frame{};
     timeout.tv_sec = 1.;  // Should be set each loop
@@ -112,7 +114,7 @@ void SocketCAN::CanFrameReceptionHandler(can_frame &frame,
                                          const int &socket_can_fd) const
 {
   if (socket_can_fd != can0_->socket_can_fd_) return;
-  RCLCPP_INFO(this->get_logger(), "rc : %d", frame.can_id);
+  ROS_INFO("rc : %d", frame.can_id);
 }
 
 

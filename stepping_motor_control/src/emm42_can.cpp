@@ -4,6 +4,7 @@ namespace stepping_motor_control {
 
 
 Emm42CanMotor::Emm42CanMotor(unsigned short id)
+    : id_(id)
 {
 }
 
